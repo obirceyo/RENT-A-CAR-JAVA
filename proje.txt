@@ -1,0 +1,152 @@
+package rearf;
+
+import java.util.Arrays;
+import java.util.Scanner;
+public class Codede {
+
+  public static void main(String[] args) {
+    String cars[]= {"Ford, Fiesta, 2015" , "Ford, Focus, 2011" , "Opel, Astra, 2018" , "Opel, Insignia, 2017" ,"Honda, Civic, 2016",
+            "BMW, 118i, 2015" , "BMW, 320d, 2016" , "Mercedes, CLK 500, 2007" , "Mercedes, S 600, 2010" , "Bugatti, Chiron, 2018" };
+	String brands[]= {"Ford" , "Opel" , "Honda", "BMW" , "Mercedes"  , "Bugatti" };
+	
+	int prices[]= {300,500,650,700,800,900,1000,1250,1550,20000};
+	int counts[]= {10,3,5,2,4,3,2,4,2,1};
+	
+
+	
+	System.out.println("Welcome to Rent a Car Company ");
+	for(int l=0;l<2;l++) { //buraya bak
+	System.out.println("1 View All");
+	System.out.println("2 View Available");
+	System.out.println("3 View Brands");
+	System.out.println("4 View By Price");
+	System.out.println("5 Rent");
+	System.out.println("6 Return");
+	System.out.println("7 Exit");
+	System.out.print("Operation:\n");
+	
+	Scanner oprScan= new Scanner(System.in);
+	
+	int opr = oprScan.nextInt(); 
+
+	if (opr>=1 && opr<=7) {
+		
+		switch(opr) {
+		
+		case 1:
+		        
+		        for(int i=0;i<10;i++){
+		          System.out.println((i+1)+"-"+cars[i]+" ("+prices[i]+" TL"+")");
+		        }//for
+		        System.out.println("");
+		        l=0;
+		         break;
+		         
+		case 2:
+		
+		        for(int i=0;i<10;i++){
+		                  System.out.println((i+1)+"-"+cars[i]+" ("+prices[i]+" TL"+")"+" - "+counts[i]+" available.");
+		                }//for
+		        System.out.println("");
+		        l=0;
+		    break;
+		    
+		case 3:
+		
+		        for(int i=0;i<brands.length;i++){
+		           System.out.println(brands[i]);
+		        }//for
+		        System.out.println("");
+		        l=0;
+		    break;
+		    
+		case 4:
+		        System.out.print("Enter minimum and maximum prices: ");
+		        Scanner minScan=new Scanner(System.in);
+		        int min=minScan.nextInt();
+		        Scanner maxScan=new Scanner(System.in);
+		        int max=maxScan.nextInt();
+		        if(min>=20000 || max<=300) {
+		        	System.out.println("No cars found between these prices!");
+		        }
+		        else {
+			        System.out.println("");
+			    	
+			        for(int i=0;i<prices.length;i++){
+			          
+			          if(min<=prices[i] && prices[i]<=max){
+			            
+			            System.out.println((i+1)+"-"+cars[i]+" ("+prices[i]+" TL"+")");
+			          }//if
+			          else {}4
+			          
+			                }//for
+			                System.out.println("");
+			                l=0;
+		        }
+		        
+		       break;
+		       
+		case 5:
+		        
+		        for(int i=0;i<10;i++){
+		          System.out.println((i+1)+"-"+cars[i]+" ("+prices[i]+" TL"+")");
+		        }//for
+		        System.out.print("Please select a car to rent: ");
+		        Scanner selectScan= new Scanner(System.in);
+		        int select=selectScan.nextInt();
+		        if(select>=1 && select<=10) {
+		        	if(counts[select-1]!=0) {
+		        System.out.println("You have rented "+cars[select-1]+" "+ "Daily price is "+prices[select-1]+" TL.");
+		        System.out.println("");
+		        counts[select-1]=counts[select-1]-1;
+		        l=0;
+		        	}
+		        	else {
+		        	System.out.println("No cars available.");
+		        	l=0;
+		        	}
+		        }
+		        else {
+			        System.out.println("Wrong car no!\n");
+			        l=0;
+		        }
+		    break;
+		        
+		case 6: 
+		
+		        for(int i=0;i<10;i++){
+		          System.out.println((i+1)+"-"+cars[i]+" ("+prices[i]+" TL"+")");
+		        }//for
+		        System.out.print("Please select a car to return: ");
+		        Scanner selectRScan= new Scanner(System.in);
+		        int selectR=selectRScan.nextInt();
+		        System.out.println("You have returned "+cars[selectR-1]+". Thank you for choosing our company.");
+		        System.out.println("");
+		        counts[selectR-1] = counts[selectR-1]+1;
+		        l=0;
+		    break;
+		
+		case 7: 
+		    System.out.println("Goodbye.");
+		    l=2;
+		    break;
+		
+		default:  System.out.println("\t----| ! ERROR ! |----");
+		      System.out.println("\t!!! Wrong Operation. Please Try Again....");
+		      l=0;
+		      break;
+	}
+		
+	}
+	else {
+		System.out.println("Invalid input. Please try again.\n");
+		l=0;
+	}
+	
+	
+	}//switch
+	
+	}//main loop for "l_loop"
+}///
+	///
